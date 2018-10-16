@@ -1,0 +1,3 @@
+&NMLEXCHARARRAY
+ EXCHARARRAY="hello world!                                                                                                                    ",
+ /
