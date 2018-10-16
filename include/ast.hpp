@@ -2,7 +2,7 @@
 // include/ast.hpp
 //
 
-#include <std::string>
+#include <string>
 #include <unordered_map>
 
 namespace client {
