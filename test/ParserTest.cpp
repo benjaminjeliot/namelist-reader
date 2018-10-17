@@ -8,5 +8,5 @@
 
 TEST(NamelistParser, Initialisation) {
   // TODO: Implement test
-  EXPECT_TRUE(true)
+  EXPECT_TRUE(true);
 }
