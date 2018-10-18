@@ -5,7 +5,7 @@
 #include <string>
 #include <unordered_map>
 
-namespace client {
+namespace nmlcpp {
 namespace parser {
 
 struct namelist {
@@ -13,4 +13,4 @@ struct namelist {
 };
 
 }  // namespace parser
-}  // namespace client
+}  // namespace nmlcpp
