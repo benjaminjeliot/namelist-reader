@@ -37,14 +37,19 @@ program data_generator
   real (kind=8) :: exrealk8
   logical :: exlogical
   character(len=128) :: exchararray
-
   integer :: a(5)
+  character(len=64) :: string_with_backslash, string_with_ampersand, &
+      string_with_comma, string_with_bang, string_with_hash, &
+      string_with_single_quote, string_with_double_quote
 
   namelist /nmlexint/ exint
   namelist  /nmlexrealk4/ exrealk4
   namelist /nmlexrealk8/ exrealk8
   namelist /nmlexlogical/ exlogical
   namelist /nmlexchararray/ exchararray
+  namelist /nmlawkwardstrings/ string_with_backslash, string_with_ampersand, &
+      string_with_comma, string_with_bang, string_with_hash, &
+      string_with_single_quote, string_with_double_quote
 
   integer :: file_unit
 
@@ -53,6 +58,15 @@ program data_generator
   exrealk8 = 3.3
   exlogical = .true.
   exchararray = "hello world!"
+
+  string_with_backslash = "back\slash"
+  string_with_ampersand = "this & that"
+  string_with_comma = "one, two, three"
+  string_with_bang = "HELLO! WORLD!"
+  string_with_hash = "thing#2"
+  string_with_single_quote = "can't, don't, didn't"
+  string_with_double_quote = 'He said "Always Forwards"'
+
 
   file_unit = get_free_file_unit()
 
@@ -74,6 +88,10 @@ program data_generator
 
   open(file_unit, file="nmlexchararray.txt")
   write (file_unit, nml=nmlexchararray)
+  close(file_unit)
+
+  open(file_unit, file="nmlawkwardstrings.txt")
+  write (file_unit, nml=nmlawkwardstrings)
   close(file_unit)
 
 end program data_generator

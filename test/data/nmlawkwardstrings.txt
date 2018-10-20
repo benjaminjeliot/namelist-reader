@@ -1,0 +1,9 @@
+&NMLAWKWARDSTRINGS
+ STRING_WITH_BACKSLASH="back\slash                                                      ",
+ STRING_WITH_AMPERSAND="this & that                                                     ",
+ STRING_WITH_COMMA="one, two, three                                                 ",
+ STRING_WITH_BANG="HELLO! WORLD!                                                   ",
+ STRING_WITH_HASH="thing#2                                                         ",
+ STRING_WITH_SINGLE_QUOTE="can't, don't, didn't                                            ",
+ STRING_WITH_DOUBLE_QUOTE="He said ""Always Forwards""                                       ",
+ /
