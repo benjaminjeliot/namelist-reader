@@ -13,7 +13,6 @@ TEST(ParserFortranIdentifierTest, Initialisation) {
 
   std::string::const_iterator iter, end;
 
-
   std::string alphas = "alphas";
   iter = alphas.cbegin();
   end = alphas.cend();
@@ -36,13 +35,13 @@ TEST(ParserFortranIdentifierTest, Initialisation) {
   // Check that we have only consumed 'identifier_1' from the input
   EXPECT_EQ('a', *iter);
 
-  std::string leading_num = "1alphas";
+  std::string leading_num = "3_leading_numeric";
   iter = leading_num.cbegin();
   end = leading_num.cend();
   r = phrase_parse(iter, end, nmlcpp::parser::fortran_identifier, space);
   EXPECT_FALSE(r);
 
-  std::string leading_underscore = "_alphas";
+  std::string leading_underscore = "_leading_underscore";
   iter = leading_underscore.cbegin();
   end = leading_underscore.cend();
   r = phrase_parse(iter, end, nmlcpp::parser::fortran_identifier, space);
