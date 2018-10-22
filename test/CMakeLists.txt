@@ -8,6 +8,7 @@ add_subdirectory(data)
 
 set(TEST_SOURCES
   ParserFortranIdentifierTest.cpp
+  ParserStringTest.cpp
   ParserTest.cpp
   test_runner.cpp
 )
