@@ -41,7 +41,12 @@ auto const single_value = double_quoted_string | single_quoted_string | (int_ >>
 //! Parser for a single (non-array) namelist entry
 auto const key_value = fortran_identifier >> '=' >> single_value;
 
+//! Parser for a key with array indices
 auto const key_index = fortran_identifier >> '(' >> int_ % ',' >> ')';
+
+//! TODO: Modify this to handle a comma separated list of values following the equals sign
+//! Parser for an array namelist entry
+auto const key_array_value = key_index >> '=' >> single_value;
 
 }  // namespace nmlcpp
 }  // namespace parser

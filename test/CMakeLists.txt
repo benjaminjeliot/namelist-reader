@@ -8,6 +8,7 @@ add_subdirectory(data)
 
 set(TEST_SOURCES
   ParserFortranIdentifierTest.cpp
+  ParserKeyArrayValueTest.cpp
   ParserKeyIndexTest.cpp
   ParserKeyValueTest.cpp
   ParserSingleValueTest.cpp
