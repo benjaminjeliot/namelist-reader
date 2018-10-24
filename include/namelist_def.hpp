@@ -23,8 +23,8 @@ using x3::string;
 auto const fortran_identifier = lexeme[(alpha >> *(alnum | char_("_")))];
 
 //! Parser for Fortran namelist header
-//! A dollar sign '$' followed by an identifier
-auto const namelist_def = lexeme[lit('$') >> fortran_identifier];
+//! An ampersand '&' followed by an identifier
+auto const namelist_header_def = lexeme[lit('&') >> fortran_identifier];
 
 // TODO: Extend parser to deal with a double quote escaped with a double quote
 //! Parser for a double quoted string
@@ -47,6 +47,10 @@ auto const key_index = fortran_identifier >> '(' >> int_ % ',' >> ')';
 //! TODO: Modify this to handle a comma separated list of values following the equals sign
 //! Parser for an array namelist entry
 auto const key_array_value = key_index >> '=' >> single_value;
+
+//! Parser for namelist block
+
+auto const namelist = namelist_header_def >> *(key_value | key_array_value) >> '/';
 
 }  // namespace nmlcpp
 }  // namespace parser

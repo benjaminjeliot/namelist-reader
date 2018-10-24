@@ -11,6 +11,7 @@ set(TEST_SOURCES
   ParserKeyArrayValueTest.cpp
   ParserKeyIndexTest.cpp
   ParserKeyValueTest.cpp
+  ParserNamelistTest.cpp
   ParserSingleValueTest.cpp
   ParserStringTest.cpp
   ParserTest.cpp
