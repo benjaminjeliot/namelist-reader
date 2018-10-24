@@ -1,5 +1,5 @@
 //
-// test/ParserSingleObjectTest.cpp
+// test/ParserSingleValueTest.cpp
 //
 
 #include <gtest/gtest.h>
