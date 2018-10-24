@@ -33,8 +33,15 @@ auto const double_quoted_string = lexeme['"' >> *(("\"\"" >> attr('"')) | (char_
 //! Parser for a single quoted string
 auto const single_quoted_string = lexeme['\'' >> *(char_ - '\'') >> '\''];
 
+// TODO: Modify the int case to stop if a space follows the dot
+//! Parser for a single value, i.e. the right hand side of an key value pair
+//! Don't parse an int that is followed by a dot, as it is probably floating point number
 auto const single_value = double_quoted_string | single_quoted_string | (int_ >> !char_('.')) | double_;
 
+//! Parser for a single (non-array) namelist entry
 auto const key_value = fortran_identifier >> '=' >> single_value;
+
+auto const key_index = fortran_identifier >> '(' >> int_ % ',' >> ')';
+
 }  // namespace nmlcpp
 }  // namespace parser
