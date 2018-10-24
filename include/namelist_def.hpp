@@ -33,7 +33,6 @@ auto const double_quoted_string = lexeme['"' >> *(("\"\"" >> attr('"')) | (char_
 //! Parser for a single quoted string
 auto const single_quoted_string = lexeme['\'' >> *(char_ - '\'') >> '\''];
 
-auto const single_object = double_quoted_string | single_quoted_string | int_ | double_;
-
+auto const single_value = double_quoted_string | single_quoted_string | int_ | double_;
 }  // namespace nmlcpp
 }  // namespace parser
