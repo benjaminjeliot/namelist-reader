@@ -69,7 +69,7 @@ BOOST_SPIRIT_DEFINE(fortran_identifier, namelist_header, double_quoted_string,
 		            single_quoted_string, single_value, key_value, key_index,
 					key_array_value, namelist)
 
-}  // namespace nmlcpp
 }  // namespace parser
+}  // namespace nmlcpp
 
 #endif  // INCLUDE_NAMELIST_DEF_H_
