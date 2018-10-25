@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "ast.hpp"
+#include "ast.h"
 #include "namelist_def.hpp"
 
 TEST(ParserFortranIdentifierTest, Initialisation) {
