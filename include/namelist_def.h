@@ -2,6 +2,9 @@
 // include/namelist_def.h
 //
 
+#ifndef INCLUDE_NAMELIST_DEF_H_
+#define INCLUDE_NAMELIST_DEF_H_
+
 #include <boost/spirit/home/x3.hpp>
 
 namespace nmlcpp {
@@ -54,3 +57,5 @@ auto const namelist = namelist_header_def >> *(key_value | key_array_value) >> '
 
 }  // namespace nmlcpp
 }  // namespace parser
+
+#endif  // INCLUDE_NAMELIST_DEF_H_

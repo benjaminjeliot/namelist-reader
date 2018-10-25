@@ -2,6 +2,9 @@
 // include/ast.h
 //
 
+#ifndef INCLUDE_AST_H_
+#define INCLUDE_AST_H_
+
 #include <string>
 #include <unordered_map>
 
@@ -14,3 +17,5 @@ struct namelist {
 
 }  // namespace parser
 }  // namespace nmlcpp
+
+#endif  // INCLUDE_AST_H_
