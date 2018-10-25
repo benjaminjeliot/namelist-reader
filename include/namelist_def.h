@@ -1,5 +1,5 @@
 //
-// include/namelist_def.hpp
+// include/namelist_def.h
 //
 
 #include <boost/spirit/home/x3.hpp>

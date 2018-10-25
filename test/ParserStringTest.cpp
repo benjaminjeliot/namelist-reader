@@ -4,7 +4,7 @@
 
 #include <gtest/gtest.h>
 #include "ast.h"
-#include "namelist_def.hpp"
+#include "namelist_def.h"
 
 TEST(ParserStringTest, FriendlyStrings) {
   using boost::spirit::x3::ascii::space;

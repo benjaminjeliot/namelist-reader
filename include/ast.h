@@ -1,5 +1,5 @@
 //
-// include/ast.hpp
+// include/ast.h
 //
 
 #include <string>
