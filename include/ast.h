@@ -9,13 +9,13 @@
 #include <unordered_map>
 
 namespace nmlcpp {
-namespace parser {
+namespace ast {
 
 struct namelist {
   std::unordered_map<std::string, std::string> data_;
 };
 
-}  // namespace parser
+}  // namespace ast
 }  // namespace nmlcpp
 
 #endif  // INCLUDE_AST_H_

@@ -6,6 +6,9 @@
 #define INCLUDE_NAMELIST_DEF_H_
 
 #include <boost/spirit/home/x3.hpp>
+#include "ast.h"
+#include "ast_adapted.h"
+#include "namelist.h"
 
 namespace nmlcpp {
 namespace parser {
@@ -30,7 +33,7 @@ x3::rule<class single_value /* , ast::single_value */ > const single_value = "si
 x3::rule<class key_value /* , ast::key_value */ > const key_value = "key_value";
 x3::rule<class key_index /* , ast::key_index */ > const key_index = "key_index";
 x3::rule<class key_array_value /* , ast::key_array_value */ > const key_array_value = "key_array_value";
-x3::rule<class namelist /* , ast::namelist */ > const namelist = "namelist";
+x3::rule<class namelist, ast::namelist> const namelist = "namelist";
 
 //! Parser for Fortran identifier name
 auto const fortran_identifier_def = lexeme[(alpha >> *(alnum | char_("_")))];

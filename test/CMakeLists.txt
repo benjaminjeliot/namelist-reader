@@ -7,6 +7,7 @@ find_package(GTest REQUIRED)
 add_subdirectory(data)
 
 set(TEST_SOURCES
+  NamelistSynthesisTest.cpp
   ParserFortranIdentifierTest.cpp
   ParserKeyArrayValueTest.cpp
   ParserKeyIndexTest.cpp
