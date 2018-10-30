@@ -11,4 +11,8 @@ namespace parser {
   //! Creates parse_rule
   BOOST_SPIRIT_INSTANTIATE(namelist_type, iterator_type, context_type);
 }
+
+parser::namelist_type namelist() {
+  return parser::namelist;
+}
 }

@@ -6,9 +6,9 @@ set(NAMELIST_SOURCES
   namelist.cpp
 )
 
-add_library(namelist ${NAMELIST_SOURCES})
+add_library(nmlcpp ${NAMELIST_SOURCES})
 
-target_include_directories(namelist
+target_include_directories(nmlcpp
   PUBLIC ${PROJECT_SOURCE_DIR}/include
   PRIVATE ${Boost_INCLUDE_DIRS}
 )

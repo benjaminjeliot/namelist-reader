@@ -27,6 +27,7 @@ target_include_directories(test_runner
 )
 
 target_link_libraries(test_runner
+  nmlcpp
   GTest::GTest
 )
 

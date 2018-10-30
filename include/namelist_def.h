@@ -25,12 +25,12 @@ using x3::lexeme;
 using x3::lit;
 using x3::string;
 
-x3::rule<class fortran_identifier /* , ast::fortran_identifier */ > const fortran_identifier = "fortran_identifier";
-x3::rule<class namelist_header /* , ast::namelist_header */ > const namelist_header = "namelist_header";
-x3::rule<class double_quoted_string /* , ast::double_quoted_string */ > const double_quoted_string = "double_quoted_string";
-x3::rule<class single_quoted_string /* , ast::single_quoted_string */ > const single_quoted_string = "single_quoted_string";
-x3::rule<class single_value /* , ast::single_value */ > const single_value = "single_value";
-x3::rule<class key_value /* , ast::key_value */ > const key_value = "key_value";
+x3::rule<class fortran_identifier, std::string> const fortran_identifier = "fortran_identifier";
+x3::rule<class namelist_header, std::string> const namelist_header = "namelist_header";
+x3::rule<class double_quoted_string, std::string> const double_quoted_string = "double_quoted_string";
+x3::rule<class single_quoted_string, std::string> const single_quoted_string = "single_quoted_string";
+x3::rule<class single_value, ast::namelist_value> const single_value = "single_value";
+x3::rule<class key_value, ast::key_value> const key_value = "key_value";
 x3::rule<class key_index /* , ast::key_index */ > const key_index = "key_index";
 x3::rule<class key_array_value /* , ast::key_array_value */ > const key_array_value = "key_array_value";
 x3::rule<class namelist, ast::namelist> const namelist = "namelist";
@@ -65,7 +65,6 @@ auto const key_index_def = fortran_identifier >> '(' >> int_ % ',' >> ')';
 auto const key_array_value_def = key_index >> '=' >> single_value;
 
 //! Parser for namelist block
-
 auto const namelist_def = namelist_header >> *(key_value | key_array_value) >> '/';
 
 BOOST_SPIRIT_DEFINE(fortran_identifier, namelist_header, double_quoted_string,
