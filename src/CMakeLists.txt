@@ -12,3 +12,7 @@ target_include_directories(nmlcpp
   PUBLIC ${PROJECT_SOURCE_DIR}/include
   PRIVATE ${Boost_INCLUDE_DIRS}
 )
+
+target_link_libraries(nmlcpp
+  ${Boost_LIBRARIES}
+)

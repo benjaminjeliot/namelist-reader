@@ -11,7 +11,8 @@
 namespace nmlcpp {
 namespace parser {
   namespace x3 = boost::spirit::x3;
-  using namelist_type = x3::rule<class namelist, ast::namelist>;
+  struct namelist_class;
+  using namelist_type = x3::rule<namelist_class, ast::namelist>;
   BOOST_SPIRIT_DECLARE(namelist_type);
 }  // parser
 parser::namelist_type namelist();

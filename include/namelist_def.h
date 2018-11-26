@@ -6,6 +6,8 @@
 #define INCLUDE_NAMELIST_DEF_H_
 
 #include <boost/spirit/home/x3.hpp>
+#include <boost/spirit/home/x3/support/utility/annotate_on_success.hpp>
+#include <boost/spirit/home/x3/support/utility/error_reporting.hpp>
 #include "ast.h"
 #include "ast_adapted.h"
 #include "namelist.h"
@@ -14,6 +16,20 @@ namespace nmlcpp {
 namespace parser {
 
 namespace x3 = boost::spirit::x3;
+
+struct error_handler
+{
+    template <typename Iterator, typename Exception, typename Context>
+    x3::error_handler_result on_error(
+        Iterator& first, Iterator const& last
+      , Exception const& x, Context const& context)
+    {
+        auto& error_handler = x3::get<x3::error_handler_tag>(context).get();
+        std::string message = "Error! Expecting: " + x.which() + " here:";
+        error_handler(x.where(), message);
+        return x3::error_handler_result::fail;
+    }
+};
 
 using x3::alpha;
 using x3::alnum;
@@ -25,6 +41,9 @@ using x3::lexeme;
 using x3::lit;
 using x3::string;
 
+struct fortran_identifier_class;
+struct namelist_class;
+
 x3::rule<class fortran_identifier, std::string> const fortran_identifier = "fortran_identifier";
 x3::rule<class namelist_header, std::string> const namelist_header = "namelist_header";
 x3::rule<class double_quoted_string, std::string> const double_quoted_string = "double_quoted_string";
@@ -33,7 +52,7 @@ x3::rule<class single_value, ast::namelist_value> const single_value = "single_v
 x3::rule<class key_value, ast::key_value> const key_value = "key_value";
 x3::rule<class key_index /* , ast::key_index */ > const key_index = "key_index";
 x3::rule<class key_array_value /* , ast::key_array_value */ > const key_array_value = "key_array_value";
-x3::rule<class namelist, ast::namelist> const namelist = "namelist";
+x3::rule<namelist_class, ast::namelist> const namelist = "namelist";
 
 //! Parser for Fortran identifier name
 auto const fortran_identifier_def = lexeme[(alpha >> *(alnum | char_("_")))];
@@ -65,11 +84,15 @@ auto const key_index_def = fortran_identifier >> '(' >> int_ % ',' >> ')';
 auto const key_array_value_def = key_index >> '=' >> single_value;
 
 //! Parser for namelist block
-auto const namelist_def = namelist_header >> *(key_value | key_array_value) >> '/';
+// auto const namelist_def = namelist_header >> *(key_value | key_array_value) >> '/';
+auto const namelist_def = namelist_header > *(key_value) > '/';
 
 BOOST_SPIRIT_DEFINE(fortran_identifier, namelist_header, double_quoted_string,
 		            single_quoted_string, single_value, key_value, key_index,
 					key_array_value, namelist)
+
+struct fortran_identifier_class : error_handler, x3::annotate_on_success {};
+struct namelist_class : error_handler, x3::annotate_on_success {};
 
 }  // namespace parser
 }  // namespace nmlcpp

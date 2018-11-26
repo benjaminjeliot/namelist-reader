@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(Testing_enabled "Testing is enabled" ON)
 option(Example_data_enabled "Example data is enabled" ON)
 
-find_package(Boost REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system)
 
 add_subdirectory(src)
 

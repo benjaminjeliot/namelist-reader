@@ -10,6 +10,7 @@
 
 #include <boost/fusion/include/io.hpp>
 #include <boost/fusion/include/std_pair.hpp>
+#include <boost/spirit/home/x3/support/ast/position_tagged.hpp>
 #include <boost/spirit/home/x3/support/ast/variant.hpp>
 
 namespace nmlcpp {
@@ -24,7 +25,7 @@ struct namelist_value : x3::variant<std::string, double, int> {
 
 typedef std::pair<std::string, namelist_value> key_value;
 
-struct namelist {
+struct namelist : x3::position_tagged {
   std::string name_;
   std::unordered_map<std::string, namelist_value> data_;
 };
